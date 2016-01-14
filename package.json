@@ -1,0 +1,22 @@
+{
+  "name": "caso",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^6.2.3",
+    "babel-preset-es2015": "^6.3.13",
+    "browser-sync": "^2.11.0",
+    "del": "^2.2.0",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.1",
+    "gulp-postcss": "^6.0.1",
+    "gulp-stylus": "^2.2.0",
+    "lost": "^6.6.3"
+  }
+}
