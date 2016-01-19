@@ -1,6 +1,7 @@
 'use strict';
 
 const gulp = require('gulp');
+const gutil = require('gulp-util');
 const babel = require('gulp-babel');
 const browserSync = require('browser-sync');
 
@@ -27,20 +28,26 @@ gulp.task('css', function() {
     return gulp.src('src/*.styl')
     .pipe(stylus())
     .pipe(postcss(processors))
+    .on('error', gutil.log)
     .pipe(gulp.dest('dist/'))
     .pipe(browserSync.stream())
 });
 
 /*========== JS ==========*/
 gulp.task('transpile-js', () => {
-    gulp.src('./src/*.js')
+    gulp.src('./src/*main.js')
     .pipe(babel({
       presets: ['es2015']
     }))
+    .on('error', gutil.log)
     .pipe(gulp.dest('./dist'))
     .pipe(browserSync.stream())
 });
 
+/*==========  Delete dir folder ==========*/
+gulp.task('delete', function(cb) {
+  del('./dir', cb);
+});
 
 /*==========  Static Server ==========*/
 gulp.task('browser-sync', () => { 
@@ -59,6 +66,7 @@ gulp.task('browser-sync', () => {
 
 /*==========  Default Task ==========*/
 gulp.task('default', [
+  'delete',
   'html',
   'css',
   'transpile-js',
